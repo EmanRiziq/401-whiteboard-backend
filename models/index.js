@@ -5,7 +5,7 @@ const Posts = require('./post.model')
 
 // const POSTGRES_URL = process.env.DATABASE_URL || "postgresql://eman:0000@localhost:5432/eman"
 
-const POSTGRES_URL = process.env.HEROKU_POSTGRESQL_MAUVE_URL ||  "postgresql://eman:0000@localhost:5432/eman";
+const POSTGRES_URL = process.env.DATABASE_URL||  "postgresql://eman:0000@localhost:5432/eman";
 
 const sequelizeOption = {
   dialectOptions: {
