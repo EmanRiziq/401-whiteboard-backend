@@ -19,9 +19,11 @@
   },
   "homepage": "https://github.com/EmanRiziq/401-whiteboard-backend#readme",
   "dependencies": {
+    "@eslint/eslintrc": "^1.3.2",
     "cors": "^2.8.5",
     "cros": "^1.0.1",
     "dotenv": "^16.0.2",
+    "eslint": "^8.23.1",
     "express": "^4.18.1",
     "pg": "^8.8.0",
     "sequelize": "^6.21.6",
