@@ -5,12 +5,15 @@ const cors = require('cors');
 const app = express();
 
 const postsRouter = require('./routes/post.route');
+const commentsRouter = require('./routes/comment.route');
+
 const errorHandler404 = require('./error-handlers/404');
 const errorHandler500 = require('./error-handlers/500');
 
 app.use(cors());
 app.use(express.json());
 app.use(postsRouter);
+app.use(commentsRouter)
 
 app.get('/', (req, res) => {
     console.log("home")
