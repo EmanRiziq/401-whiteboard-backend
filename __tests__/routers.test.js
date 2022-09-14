@@ -15,8 +15,6 @@ describe('Test Post get routes', () => {
         expect(res.status).toEqual(200);
         expect(res.text).toEqual('{"id":1,"title":"first post","content":"first post for testing","img":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0ig2oiZskQ831gT0f-xLQfG2UJR3_2RBL2g&usqp=CAU","createdAt":"2022-09-12T18:11:05.029Z","updatedAt":"2022-09-12T18:11:05.029Z"}');
 
-        // "{\"id\":1,\"title\":\"first post\",\"content\":\"first post for testing\",\"img\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0ig2oiZskQ831gT0f-xLQfG2UJR3_2RBL2g&usqp=CAU\",\"createdAt\":\"2022-09-12T18:11:05.029Z\",\"updatedAt\":\"2022-09-12T18:11:05.029Z\"}"
-
     });
 });
 
