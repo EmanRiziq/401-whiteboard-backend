@@ -3,13 +3,13 @@
 const express = require('express');
 const router = express.Router();
 
-const { Posts, Comment, commentModel } = require('../models/index');
+const { Posts, commentModel,postModel } = require('../models/index');
 
 // Routes
 router.get('/post', getposts);
 router.get('/post/:id', getOneposts);
 router.get('/getPostComment', getPostComments);
-router.get( '/getPostComment/:id', getOnePostWithComments );
+router.get('/getPostComment/:id', getOnePostWithComments);
 router.post('/post', createposts);
 router.delete('/post/:id', deleteposts);
 router.put('/post/:id', updateposts);
@@ -27,17 +27,20 @@ async function getOneposts(req, res) {
     res.status(200).json(posts)
 }
 
-  async function getPostComments ( req, res ) {
-    const postComment = await Posts.readWithComments( commentModel );
-    res.status( 200 ).json( {
+async function getPostComments(req, res) {
+    const postComment = await Posts.readWithComments(commentModel);
+    res.status(200).json({
         postComment
-    } );
+    });
 }
 
-async function getOnePostWithComments ( req, res ) {
+async function getOnePostWithComments(req, res) {
     const id = req.params.id;
-    const postComment = await Posts.readOneWithComments( id, commentModel );
-    res.status( 200 ).json( postComment );
+    const postComment = await postModel.findOne({ where: { id }, include: [commentModel] });
+    res.status(200).json(postComment);
+    // const id = req.params.id;
+    // const postComment = await Posts.readOneWithComments( id, commentModel );
+    // res.status( 200 ).json( postComment );
 }
 
 
