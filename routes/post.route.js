@@ -53,7 +53,6 @@ async function createposts(req, res) {
 }
 
 async function deleteposts(req, res) {
-    console.log(1);
     const id = req.params.id;
     let deletedposts = await Posts.delete(id);
     res.status(204).json({ deletedposts });
