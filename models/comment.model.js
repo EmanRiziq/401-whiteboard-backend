@@ -12,10 +12,6 @@ const comment = (sequelize, DataTypes) => sequelize.define('comment', {
   userID: {
     type: DataTypes.INTEGER,
     allowNull: false
-  },
-  userID: {
-    type: DataTypes.INTEGER,
-    allowNull: false
   }
 });
 
