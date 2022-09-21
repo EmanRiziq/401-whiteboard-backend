@@ -30,6 +30,12 @@ const userModel = User(sequelize, DataTypes);
 postsModel.hasMany(commentModel, { foreignKey: 'postID', sourceKey: 'id' })
 commentModel.belongsTo(postsModel, { foreignKey: 'postID', targetKey: 'id' })
 
+userModel.hasMany( postsModel, { foreignKey: 'userID', sourceKey: 'id' } );
+postsModel.belongsTo( userModel, { foreignKey: 'userID', targetKey: 'id' } );
+
+userModel.hasMany( commentModel, { foreignKey: 'userID', sourceKey: 'id' } );
+commentModel.belongsTo( userModel, { foreignKey: 'userID', targetKey: 'id' } );
+
 const postCollection = new collection(postsModel);
 const commentCollection = new collection(commentModel);
 

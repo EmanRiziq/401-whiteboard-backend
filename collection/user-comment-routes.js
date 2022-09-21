@@ -26,6 +26,16 @@ class userCommentRoutes {
         }
     }
 
+    async readWithUser(id1,id2) {
+        try {
+           
+                return await this.model.findOne({ where: { id1: id ,id2:userID} });
+          
+        } catch (e) {
+            console.error(`Error in reading data with the id: ${id}`);
+        }
+    }
+
     async update(id, obj) {
         try {
             const dataById = await this.model.findOne({ where: { id: id } });

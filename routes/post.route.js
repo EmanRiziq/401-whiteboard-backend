@@ -15,7 +15,9 @@ router.delete('/post/:id', deleteposts);
 router.put('/post/:id', updateposts);
 
 async function getposts(req, res) {
-    let posts = await Posts.read();
+
+    let posts = await postModel.findAll()
+    // let posts = await Posts.read();
     res.status(200).json({
         posts
     });

@@ -8,6 +8,14 @@ const comment = (sequelize, DataTypes) => sequelize.define('comment', {
   postID: {
     type: DataTypes.INTEGER,
     allowNull: false
+  },
+  userID: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  userID: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   }
 });
 
