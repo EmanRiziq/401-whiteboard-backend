@@ -54,6 +54,17 @@ async function createposts(req, res) {
     res.status(201).json(posts);
 }
 
+// async function createposts(req, res) {
+//     const userID = req.params.userID;
+//     const content = req.body.content;
+//     const title = req.body.title;
+//     const img = req.body.img;
+//     const newposts = {userID,content,title,img};
+//     const posts = await Posts.create(newposts);
+//     res.status(201).json(posts);
+// }
+
+
 async function deleteposts(req, res) {
     const id = req.params.id;
     let deletedposts = await Posts.delete(id);
