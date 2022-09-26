@@ -3,13 +3,13 @@
 const express = require('express');
 const router = express.Router();
 
-const {Comment } = require('../models/index');
+const {Comment,User } = require('../models/index');
 
 
 // Routes
 router.get('/comment', getAllComment);
-router.get('/comment/:postID/:userID', getOneComment);
-router.post('/comment', createComment);
+router.get('/comment', getOneComment);
+router.post('/comment/:postID/:userID', createComment);
 router.put('/comment/:id', updateComment);
 router.delete('/comment/:id', deleteComment);
 
@@ -19,18 +19,23 @@ async function getAllComment(req, res) {
 }
 
 async function getOneComment(req, res) {
-    const postID = req.params.postID;
-    const userID = req.params.postID;
-
-
-    const comments = await Comment.readWithUser(postID,userID);
-    res.status(200).json(comments)
+  const id = req.params.postID;
+  const comments = await Comment.read(id);
+  res.status(200).json(comments)
 }
 
-async function createComment(req, res) {
-  const newComment = req.body;
-  const comments = await Comment.create(newComment);
-  res.status(201).json(comments);
+async function createComment ( req, res ) {
+  const postID = req.params.postID;
+  const content = req.body.content;
+  const userID = req.params.userID;
+  const obj = {postID, content, userID};
+  await Comment.create( obj )
+      .then( async () => {
+          await Comment.read()
+              .then( ( comments ) => {
+                  res.status( 200 ).json( comments );
+              } );
+      } );
 }
 
 async function updateComment(req, res) {

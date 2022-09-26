@@ -26,13 +26,13 @@ class userCommentRoutes {
         }
     }
 
-    async readWithUser(postID,userID) {
+    async readWithUser(id,user) {
         try {
            
-                return await this.model.findOne({ where: { postID,userID} });
+                return await this.model.findOne({ where: { id},include: [ user ]  });
           
         } catch (e) {
-            console.error(`Error in reading data with the id: ${postID}`);
+            console.error(`Error in reading data with the id: ${id}`);
         }
     }
 

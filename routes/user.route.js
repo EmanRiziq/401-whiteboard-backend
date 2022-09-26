@@ -6,7 +6,7 @@ const bearerAuth = require( '../middlewares/bearer-auth' );
 
 const router = require('express').Router();
 
-router.post('/login', login);
+router.post('/signin', login);
 router.post('/signup', userAuth.saveUser, signup)
 router.get( '/users', bearerAuth, allUser );
 
