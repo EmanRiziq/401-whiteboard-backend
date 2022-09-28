@@ -7,11 +7,12 @@ const { User } = require("../models/index");
 
 const signup = async (req, res) => {
     try {
-        const { userName, password } = req.body;
+        const { userName, password ,role} = req.body;
         const data = {
             userName,
             // email,
-            password: await bcrypt.hash(password, 10)
+            password: await bcrypt.hash(password, 10),
+            role
         };
         // console.log(data)
 

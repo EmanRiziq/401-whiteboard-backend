@@ -8,6 +8,6 @@ const router = require('express').Router();
 
 router.post('/signin', login);
 router.post('/signup', userAuth.saveUser, signup)
-router.get( '/users', bearerAuth, allUser );
+router.get( '/users', allUser );
 
 module.exports = router;
