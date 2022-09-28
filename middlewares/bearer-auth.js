@@ -4,7 +4,7 @@
 const {User} = require("../models/index");
 
 module.exports = async (req, res, next) => {
-    console.log('From inside the middleware');
+    // console.log('From inside the middleware');
     if (!req.headers.authorization) (
         next('You\'re not authorized')
     )
