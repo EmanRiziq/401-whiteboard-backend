@@ -3,19 +3,22 @@
 const express = require('express');
 const router = express.Router();
 
-const { Posts, commentModel,postModel } = require('../models/index');
+const { Posts, commentModel, postModel } = require('../models/index');
+const bearerAuth = require('../middlewares/bearer-auth');
+
+const acl = require("../middlewares/ACL");
+
 
 // Routes
-router.get('/post', getposts);
-router.get('/post/:id', getOneposts);
-router.get('/getPostComment', getPostComments);
-router.get('/getPostComment/:id', getOnePostWithComments);
-router.post('/post', createposts);
-router.delete('/post/:id', deleteposts);
-router.put('/post/:id', updateposts);
+router.get('/post', bearerAuth, acl("read"), getposts);
+router.get('/post/:id', bearerAuth, acl("read"), getOneposts);
+router.get('/getPostComment', bearerAuth, acl("read"), getPostComments);
+router.get('/getPostComment/:id', bearerAuth, acl("read"), getOnePostWithComments);
+router.post('/post', bearerAuth, acl("creat"), createposts);
+router.delete('/post/:id', bearerAuth, acl("delete"), deleteposts);
+router.put('/post/:id', bearerAuth, acl("update"), updateposts);
 
 async function getposts(req, res) {
-
     let posts = await postModel.findAll()
     // let posts = await Posts.read();
     res.status(200).json({
